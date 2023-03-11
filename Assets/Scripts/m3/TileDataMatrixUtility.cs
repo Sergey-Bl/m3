@@ -7,11 +7,7 @@ namespace match3
 	{
 		public static void Swap(int x1, int y1, int x2, int y2, TileData[,] tiles)
 		{
-			var tile1 = tiles[x1, y1];
-
-			tiles[x1, y1] = tiles[x2, y2];
-
-			tiles[x2, y2] = tile1;
+			(tiles[x1, y1], tiles[x2, y2]) = (tiles[x2, y2], tiles[x1, y1]);
 		}
 
 		public static (TileData[], TileData[]) GetConnections(int originX, int originY, TileData[,] tiles)

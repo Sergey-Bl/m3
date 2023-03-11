@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace match3
 {
-    [CreateAssetMenu(menuName = "Assets/Resources/Items")]
+    [CreateAssetMenu(menuName = "Resources/Items")]
     public sealed class TileTypeAsset : ScriptableObject
     {
         public int id;

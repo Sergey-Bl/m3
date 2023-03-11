@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56f08d5e6a923409cb2110e061bf77aa, type: 3}
-  m_Name: BagCoins
+  m_Script: {fileID: 11500000, guid: 6dea02c19e01444d87f9ea5dd6c46b48, type: 3}
+  m_Name: Coin_4
   m_EditorClassIdentifier: 
+  id: 7
   value: 5
   sprite: {fileID: 21300000, guid: c08e5ca35e5edc54493663f56c01f0a4, type: 3}
