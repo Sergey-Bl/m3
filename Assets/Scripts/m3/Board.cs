@@ -44,8 +44,8 @@ namespace match3
                 var data = new TileData[width, height];
 
                 for (var y = 0; y < height; y++)
-                for (var x = 0; x < width; x++)
-                    data[x, y] = GetTile(x, y).Data;
+                    for (var x = 0; x < width; x++)
+                        data[x, y] = GetTile(x, y).Data;
 
                 return data;
             }
@@ -121,7 +121,7 @@ namespace match3
                 if (_selection.Count > 0)
                 {
                     if (Math.Abs(tile.x - _selection[0].x) == 1 && Math.Abs(tile.y - _selection[0].y) == 0
-                        || Math.Abs(tile.y - _selection[0].y) == 1 && Math.Abs(tile.x - _selection[0].x) == 0)
+                     || Math.Abs(tile.y - _selection[0].y) == 1 && Math.Abs(tile.x - _selection[0].x) == 0)
                         _selection.Add(tile);
                 }
                 else
@@ -179,11 +179,7 @@ namespace match3
             tile1.icon = icon2;
             tile2.icon = icon1;
 
-            var tile1Item = tile1.Type;
-
-            tile1.Type = tile2.Type;
-
-            tile2.Type = tile1Item;
+            (tile1.Type, tile2.Type) = (tile2.Type, tile1.Type);
 
             _isSwapping = false;
         }
@@ -201,14 +197,12 @@ namespace match3
                 didMatch = true;
 
                 var tiles = GetTiles(match.Tiles);
-
                 var deflateSequence = DOTween.Sequence();
 
                 foreach (var tile in tiles)
                     deflateSequence.Join(tile.icon.transform.DOScale(Vector3.zero, tweenDuration).SetEase(Ease.InBack));
 
                 audioSource.PlayOneShot(matchSound);
-                
 
                 await deflateSequence.Play()
                     .AsyncWaitForCompletion();
@@ -240,8 +234,8 @@ namespace match3
             _isShuffling = true;
 
             foreach (var row in rows)
-            foreach (var tile in row.tiles)
-                tile.Type = tileTypes[Random.Range(0, tileTypes.Length)];
+                foreach (var tile in row.tiles)
+                    tile.Type = tileTypes[Random.Range(0, tileTypes.Length)];
 
             _isShuffling = false;
         }
